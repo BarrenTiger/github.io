@@ -5,17 +5,14 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
-  unstable_HistoryRouter as BrowserRouter,
+  HashRouter,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
 import { PageWrapper } from "./components/ui/page-wrapper";
 import { routers } from "./configs/routers";
-import { createBrowserHistory } from "history";
 
-const history = createBrowserHistory();
-window._WEAPPS_HISTORY = history;
 // Create a client
 const queryClient = new QueryClient();
 
@@ -26,7 +23,7 @@ const App: React.FC = () => {
         <TooltipProvider>
           <Toaster />
           <Sonner position="top-center" />
-          <BrowserRouter history={history}>
+          <HashRouter>
             <Routes>
               <Route
                 path="/"
@@ -49,7 +46,7 @@ const App: React.FC = () => {
                 );
               })}
             </Routes>
-          </BrowserRouter>
+          </HashRouter>
         </TooltipProvider>
       </QueryClientProvider>
     </React.StrictMode>
